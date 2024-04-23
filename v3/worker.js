@@ -158,7 +158,7 @@ const onMessage = (request, sender, response) => {
           baseUrl = baseUrl.slice(0, -1);
         }
         const apiKey = prefs['sightxr-api-key'];
-        console.log("Sending article to SightXR", article, 'at', { baseUrl, apiKey });
+        console.log("Sending article to SightXR", article, 'at', { baseUrl });
         fetch(`${baseUrl}/api/sources/from-chrome-extension`, {
           method: "POST",
           body: JSON.stringify(article),
