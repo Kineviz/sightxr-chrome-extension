@@ -302,6 +302,27 @@ shortcuts.render = (spans = shortcuts.keys()) => {
   document.getElementById('toolbar').appendChild(span);
 }
 
+/* sightxr */
+{
+  const span = document.createElement('span');
+  span.title = chrome.i18n.getMessage('rd_printing');
+  span.classList.add('icon-print', 'hidden');
+  span.style.backgroundColor = '#9986C8';
+  span.id = 'send-to-sightxr';
+
+  span.onclick = () => {
+    chrome.runtime.sendMessage({
+      cmd: 'send-to-sightxr',
+      content: article
+    });
+  };
+  shortcuts.set(span, {
+    id: 'send-to-sightxr',
+    action: span.onclick
+  });
+  document.getElementById('toolbar').appendChild(span);
+}
+
 /* screenshot */
 {
   const span = document.createElement('span');
@@ -1120,6 +1141,9 @@ config.load(() => {
 
   if (config.prefs['printing-button']) {
     document.getElementById('printing-button').classList.remove('hidden');
+  }
+  if (config.prefs['send-to-sightxr']) {
+    document.getElementById('send-to-sightxr').classList.remove('hidden');
   }
   if (config.prefs['screenshot-button']) {
     document.getElementById('screenshot-button').classList.remove('hidden');

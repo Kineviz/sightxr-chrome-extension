@@ -1,4 +1,6 @@
 self.defaults = {
+  'sightxr-base-url': '',
+  'sightxr-api-key': '',
   'embedded': false,
   'auto-fullscreen': false,
   'auto-rules': [],
@@ -68,6 +70,7 @@ Original Page: [URL]`,
   'guide-timeout': 2000, // ms
   'mode': 'sepia',
   'printing-button': true,
+  'send-to-sightxr': true,
   'screenshot-button': false,
   'note-button': true,
   'mail-button': true,

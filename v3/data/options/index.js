@@ -110,6 +110,15 @@ function save() {
   }
 
   chrome.storage.local.set({
+    /**
+     * SightXR
+     */
+    'sightxr-base-url': document.getElementById('sightxr-base-url').value,
+    'sightxr-api-key': document.getElementById('sightxr-api-key').value,
+
+    /**
+     * Reader View
+     */
     'auto-rules': json,
     'auto-fullscreen': document.getElementById('auto-fullscreen').checked,
     'embedded': document.getElementById('embedded').checked,
@@ -160,6 +169,9 @@ function save() {
 }
 
 function restore() {
+  document.getElementById('sightxr-base-url').value = config.prefs['sightxr-base-url'];
+  document.getElementById('sightxr-api-key').value = config.prefs['sightxr-api-key'];
+
   document.getElementById('auto-fullscreen').checked = config.prefs['auto-fullscreen'];
   document.getElementById('auto-rules').value = config.prefs['auto-rules'].join(', ');
 

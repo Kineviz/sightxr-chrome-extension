@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "Reader View",
-  "description": "__MSG_description__",
+  "name": "SightXR Chrome Extension",
+  "description": "",
   "default_locale": "en",
-  "version": "0.7.5",
+  "version": "0.8.0",
   "permissions": [
     "storage",
     "activeTab",
@@ -22,7 +22,7 @@
     "service_worker": "worker.js"
   },
   "action": {},
-  "homepage_url": "https://webextension.org/listing/chrome-reader-view.html",
+  "homepage_url": "https://github.com/Kineviz/sightxr-chrome-extension",
   "icons": {
     "16": "data/icons/16.png",
     "32": "data/icons/32.png",

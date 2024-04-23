@@ -95,6 +95,7 @@ const onClicked = async (tab, embedded = false) => {
         });
       }
 
+      console.log('Injecting wrapper.js')
       await chrome.scripting.executeScript({
         target,
         injectImmediately: true,
@@ -145,6 +146,34 @@ const onMessage = (request, sender, response) => {
   if (request.cmd === 'switch-to-reader-view') {
     onClicked(sender.tab);
   }
+  else if (request.cmd === 'send-to-sightxr') {
+    const id = sender.tab ? sender.tab.id : '';
+    aStorage.get(id).then(article => {
+      chrome.storage.local.get({
+        'sightxr-base-url': '',
+        'sightxr-api-key': '',
+      }).then(prefs => {
+        let baseUrl = prefs['sightxr-base-url'];
+        if (baseUrl.endsWith('/')) {
+          baseUrl = baseUrl.slice(0, -1);
+        }
+        const apiKey = prefs['sightxr-api-key'];
+        console.log("Sending article to SightXR", article, 'at', { baseUrl, apiKey });
+        fetch(`${baseUrl}/api/sources/from-chrome-extension`, {
+          method: "POST",
+          body: JSON.stringify(article),
+          headers: {
+            Authorization: `Basic ${apiKey}`,
+            "Content-Type": "application/json; charset=utf-8",
+            'ngrok-skip-browser-warning': 'true',
+          }
+        })
+          .then((res) => res.text())
+          .then(console.log.bind(console))
+          .catch(console.error.bind(console));
+      })
+    });
+  }
   else if (request.cmd === 'open-reader' && request.article) {
     request.article.icon = sender.tab.favIconUrl;
     aStorage.set(sender.tab.id, request.article).then(() => {
@@ -164,6 +193,7 @@ const onMessage = (request, sender, response) => {
   else if (request.cmd === 'read-data') {
     const id = sender.tab ? sender.tab.id : '';
     aStorage.get(id).then(article => {
+      console.log(article);
       if (article) {
         chrome.storage.local.get({
           'highlights-objects': defaults['highlights-objects']
