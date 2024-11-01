@@ -3,7 +3,7 @@
   "name": "SightXR Chrome Extension",
   "description": "",
   "default_locale": "en",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "permissions": [
     "storage",
     "activeTab",

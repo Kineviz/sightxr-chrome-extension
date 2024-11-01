@@ -115,6 +115,7 @@ function save() {
      */
     'sightxr-base-url': document.getElementById('sightxr-base-url').value,
     'sightxr-api-key': document.getElementById('sightxr-api-key').value,
+    'sightxr-project-id': document.getElementById('sightxr-project-id').value,
 
     /**
      * Reader View
@@ -171,6 +172,7 @@ function save() {
 function restore() {
   document.getElementById('sightxr-base-url').value = config.prefs['sightxr-base-url'];
   document.getElementById('sightxr-api-key').value = config.prefs['sightxr-api-key'];
+  document.getElementById('sightxr-project-id').value = config.prefs['sightxr-project-id'];
 
   document.getElementById('auto-fullscreen').checked = config.prefs['auto-fullscreen'];
   document.getElementById('auto-rules').value = config.prefs['auto-rules'].join(', ');

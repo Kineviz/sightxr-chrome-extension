@@ -1,6 +1,7 @@
 self.defaults = {
   'sightxr-base-url': '',
   'sightxr-api-key': '',
+  'sightxr-project-id': '',
   'embedded': false,
   'auto-fullscreen': false,
   'auto-rules': [],

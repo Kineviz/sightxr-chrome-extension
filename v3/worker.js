@@ -152,13 +152,16 @@ const onMessage = (request, sender, response) => {
       chrome.storage.local.get({
         'sightxr-base-url': '',
         'sightxr-api-key': '',
+        'sightxr-project-id': '',
       }).then(prefs => {
         let baseUrl = prefs['sightxr-base-url'];
         if (baseUrl.endsWith('/')) {
           baseUrl = baseUrl.slice(0, -1);
         }
         const apiKey = prefs['sightxr-api-key'];
-        console.log("Sending article to SightXR", article, 'at', { baseUrl });
+        const projectId = prefs['sightxr-project-id'];
+        article.projectId = projectId;
+        console.log("Sending article to SightXR", article, 'at', { baseUrl, projectId });
         fetch(`${baseUrl}/api/sources/from-chrome-extension`, {
           method: "POST",
           body: JSON.stringify(article),

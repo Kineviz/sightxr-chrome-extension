@@ -14,7 +14,7 @@ Forked from https://github.com/rNeomy/reader-view.
 3. In your browser, visit the URL `chrome://extensions/`
 4. Enable "Developer mode". (it's a toggle in the top right corner)
 5. Click "Load unpacked". (button in top left)
-6. Select folder containing file "manifest.json".
+6. Select v3 folder containing file "manifest.json".
 7. Pin the SightXR Chrome Extension by clicking the Extensions button in the URL Bar and then clicking the Pin button.
 
 ## Usage
